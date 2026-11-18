@@ -1,0 +1,402 @@
+/* ============================================================   Organizaê — estilos   Ordem: 1) variáveis  2) reset  3) layout  4) formulário   5) botões  6) contadores e filtros  7) lista de tarefas   8) toast  9) responsividade   ============================================================ */
+/* 1) VARIÁVEIS */
+:root {
+    --cor-fundo: #f4f6fb;
+    --cor-superficie: #ffffff;
+    --cor-texto: #1f2937;
+    --cor-texto-suave: #6b7280;
+    --cor-borda: #e5e7eb;
+    --cor-primaria: #4f46e5;
+    --cor-primaria-escura: #4338ca;
+    --cor-sucesso: #16a34a;
+    --cor-aviso: #d97706;
+    --cor-erro: #dc2626;
+    --raio: 10px;
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* 2) RESET E BASE */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.5;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+}
+
+ h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+/* 3) LAYOUT (mobile first: uma coluna) */
+.cabecalho {
+    background: var(--cor-primaria);
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.cabecalho h1 {
+    font-size: 2rem;
+}
+
+.cabecalho p {
+    opacity: 0.9;
+}
+
+.container {
+    flex: 1;
+    display: grid;
+    align-content: start;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.painel {
+    background: var(--cor-superficie);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra);
+    padding: 1.25rem;
+}
+
+.rodape {
+    text-align: center;
+    padding: 1rem;
+    color: var(--cor-texto-suave);
+    font-size: 0.875rem;
+}
+
+/* 4) FORMULÁRIO */
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+ input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    font: inherit;
+    background: #fff;
+    color: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid rgba(79, 70, 229, 0.3);
+    border-color: var(--cor-primaria);
+}
+
+input.invalido {
+    border-color: var(--cor-erro);
+}
+
+.erro {
+    color: var(--cor-erro);
+    font-size: 0.85rem;
+}
+
+.acoes-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* 5) BOTÕES */
+.btn {
+    border: 0;
+    border-radius: var(--raio);
+    padding: 0.65rem 1.1rem;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn:focus-visible,
+.filtro:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.4);
+    outlineoffset: 2px;
+}
+
+.btn-primario {
+    background: var(--cor-primaria);
+    color: #fff;
+}
+
+.btn-primario:hover {
+    background: var(--cor-primaria-escura);
+}
+
+.btn-secundario {
+    background: #eef0f6;
+    color: var(--cor-texto);
+}
+
+.btn-secundario:hover {
+    background: #e1e4ee;
+}
+
+.btn-perigo {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.btn-perigo:hover {
+    background: #fecaca;
+}
+
+.btn-pequeno {
+    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+}
+
+Page 26 of 44
+
+/* 6) CONTADORES E FILTROS */
+.contadores {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.contador {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0.75rem;
+    background: var(--cor-fundo);
+    border-radius: var(--raio);
+}
+
+.contador span {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--corprimaria);
+}
+
+.contador small {
+    color: var(--cor-texto-suave);
+}
+
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.filtro {
+    border: 1px solid var(--cor-borda);
+    background: #fff;
+    color: var(--cor-texto);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font: inherit;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.filtro:hover {
+    border-color: var(--cor-primaria);
+}
+
+.filtro.ativo {
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+    color: #fff;
+}
+
+/* 7) LISTA DE TAREFAS */
+.lista {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+     gap: 0.75rem;
+}
+
+.tarefa {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    background: #fff;
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.tarefa input[type="checkbox"] {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0.2rem 0 0;
+    cursor: pointer;
+    accent-color: var(--cor-primaria);
+}
+
+.tarefa-corpo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    minwidth: 0;
+}
+
+.tarefa-titulo {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.tarefa-descricao {
+    color: var(--cor-texto-suave);
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.tarefa-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--cor-texto-suave);
+}
+
+.tarefa-acoes {
+    grid-column: 2;
+    display: flex;
+    gap: 0.4rem;
+}
+
+.tarefa.concluida {
+    background: #f9fafb;
+}
+
+.tarefa.concluida .tarefa-titulo {
+    text-decoration: line-through;
+    color: var(--cor-texto-suave);
+}
+
+.badge {
+    padding: 0.1rem 0.6rem;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #fff;
+
+}
+
+.badge-baixa {
+    background: var(--cor-sucesso);
+}
+
+.badge-media {
+    background: var(--cor-aviso);
+}
+
+.badge-alta {
+    background: var(--cor-erro);
+}
+
+.vazio {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: var(--cor-textosuave);
+}
+
+/* 8) TOAST (mensagem de feedback) */
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    z-index: 10;
+    max-width: calc(100% - 2rem);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--raio);
+    background: var(--cor-sucesso);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, 150%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.toast.visivel {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.toast-sucesso {
+    background: var(--cor-sucesso);
+}
+
+.toast-aviso {
+    background: var(--cor-aviso);
+}
+
+.toast-erro {
+    background: var(--cor-erro);
+}
+
+/* 9) RESPONSIVIDADE */
+@media (min-width: 600px) {
+    .tarefa {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .tarefa-acoes {
+        grid-column: auto;
+    }
+}
+
+@media (min-width: 800px) {
+    .container {
+        grid-template-columns: 340px 1fr;
+        align-items: start;
+    }
+}

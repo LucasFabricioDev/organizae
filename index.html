@@ -3,12 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Organizaê</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Organizaê: gerenciador de tarefas no navegador.">
+    <title>Organizaê — Gerenciador de Tarefas</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>Organizaê funciona!</h1>
+    <header class="cabecalho">
+        <h1>Organizaê</h1>
+        <p>Organize suas tarefas de um jeito simples.</p>
+    </header>
+    <main class="container">
+        <section class="painel" aria-labelledby="titulo-form">
+            <h2 id="titulo-form">Nova tarefa</h2>
+            <form id="form-tarefa" novalidate>
+                <div class="campo"> <label for="titulo">Título</label> <input type="text" id="titulo" maxlength="80"
+                        placeholder="Ex.: Estudar JavaScript" required> <span id="erro-titulo" class="erro"
+                        role="alert"></span> </div>
+                <div class="campo"> <label for="descricao">Descrição (opcional)</label> <textarea id="descricao"
+                        rows="3" maxlength="200"></textarea> </div>
+                <div class="campo"> <label for="prioridade">Prioridade</label> <select id="prioridade">
+                        <option value="baixa">Baixa</option>
+                         <option
+                            value="media" selected>Média</option>
+                        <option value="alta">Alta</option>
+                    </select> </div>
+                <div class="acoes-form"> <button type="submit" id="btn-salvar" class="btn btnprimario">Adicionar
+                        tarefa</button> <button type="button" id="btn-cancelar" class="btn btn-secundario"
+                        hidden>Cancelar edição</button> </div>
+            </form>
+        </section>
+        <section class="painel" aria-labelledby="titulo-lista">
+            <h2 id="titulo-lista">Minhas tarefas</h2>
+            <div class="contadores" aria-live="polite">
+                <div class="contador"><span id="cont-total">0</span> <small>Total</small></div>
+                <div class="contador"><span id="cont-pendentes">0</span> <small>Pendentes</small></div>
+                <div class="contador"><span id="cont-concluidas">0</span> <small>Concluídas</small></div>
+            </div>
+            <div class="filtros" role="group" aria-label="Filtrar tarefas por status"> <button type="button"
+                    class="filtro ativo" data-filtro="todas" ariapressed="true">Todas</button> <button type="button"
+                    class="filtro" data-filtro="pendentes" ariapressed="false">Pendentes</button> <button type="button"
+                    class="filtro" data-filtro="concluidas" ariapressed="false">Concluídas</button> </div>
+            <ul id="lista-tarefas" class="lista"></ul>
+            <p id="msg-vazio" class="vazio" hidden></p>
+        </section>
+    </main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <footer class="rodape">
+        <p>Organizaê &copy; 2026 — Trabalho prático individual</p>
+    </footer> 
     <script src="js/app.js"></script>
 </body>
 
